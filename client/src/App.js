@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-function App() {
+import { createStructuredSelector } from 'reselect';
+import HomePage from './pages/home.component';
+import SignInPage from './pages/signin.component';
+import DashboardPage from './pages/dashboard.component.jsx';
+//import { _404}  from './pages/error/errorpage.component';
+
+import { selectCurrentUser } from './redux/user/user.selector';
+import { checkUserSession } from './redux/user/user.action';
+
+import Header from './components/header.component';
+
+const App = ({ checkUserSession, currentUser }) => {
+  
+  useEffect(() => {
+    checkUserSession() }, [checkUserSession]
+  );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/dashboard"  render={() =>
+            currentUser ? (
+              <DashboardPage />
+            ) : ( 
+              <Redirect to='/' />
+              )
+          }
+          />
+          <Route exact path="/signin" render={() =>
+              currentUser ? (
+                <Redirect to='/dashboard' />
+              ) : (
+                <SignInPage />
+              )
+            } 
+          />
+        </Switch>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+});
+
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
