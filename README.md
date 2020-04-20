@@ -3,7 +3,7 @@
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-##Prerequisites
+## Prerequisites
 * [NPM](https://www.npmjs.com/get-npm)
 
 ### Installing
@@ -12,7 +12,7 @@ In order to get the project up and running:
 1. Put your environment variables at .env
 2. Install all dependencies and spin up the server: 
   
-Run the client server at http://localhost:3000/
+Run the front-end server at http://localhost:3000/
   ``` javascript
     $ cd client
     $ npm install 
@@ -43,7 +43,7 @@ For Testing
 ## Back-End API
 | Method | Endpoint | Request | Response |
 | ------ | ------ | ----- | ------- |
-| POST   | /api/register | {email: email, password: password } | payload |
+| POST   | /api/register | { email: email, password: password } | payload |
 | POST   | /api/login | { email: email, password: password }| payload |
 | GET   | /api/:id/getOneUser | | |
 
