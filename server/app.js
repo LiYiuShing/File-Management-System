@@ -32,4 +32,4 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Router
 app.use('/api', restRoute);
 
-app.listen(3000, () => console.log('Server Up and running'))
+app.listen(5000, () => console.log('Server Up and running'))
