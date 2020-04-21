@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Binary = require('mongodb').Binary;
 
 const schema = {
     fileId: {
@@ -7,19 +8,22 @@ const schema = {
         type: String,
         unique: true
     },
-    length: {
-        type: String
-    },
     fileName: {
         type: String,
         require: [true, "File name is required"],
     },
-    uploadDate: {
-        type: Date
+    source: {
+        type: String,
     },
     userId: {
         type: String,
     },
+    type: {
+        type: String,
+    },
+    size: {
+        type: String
+    }
 };
 
 const fileSchema = new Schema(schema, { timestamps: true })
@@ -28,10 +32,11 @@ fileSchema.set('toJSON', {
     transform: (doc, ret) => {
         let retJson = {
             fileId: ret._id,
-            length: ret.length,
             fileName: ret.fileName,
-            uploadDate: ret.date, 
-            userId: ret.userId
+            userId: ret.userId,
+            source: ret.source,
+            type: ret.type,
+            size: ret.size
         }
         return retJson
     }

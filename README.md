@@ -53,8 +53,8 @@ For Testing
 ### React
 A JavaScript library for building user interfaces.
 
-### React Hook
-Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
+### Redux
+Redux is a predictable state container for JavaScript apps. 
 
 ### React Router
 A collection of navigational components that compose declaratively with the application.

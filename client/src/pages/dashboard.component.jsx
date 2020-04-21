@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import FileAdd from '../components/fileAdd.component';
+import { connect } from 'react-redux';
 
-const DashboardPage = () => {
+const DashboardPage = ({user}) => {
     return(
         <div>
-            HI
+            <div>GET, ADD, PUT, DELETE</div>
+            <FileAdd user={user} />
         </div>
     )
 } 
 
-export default DashboardPage;
-  
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    }
+};
+
+export default connect(
+  mapStateToProps,
+  ''
+)(DashboardPage);

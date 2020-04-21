@@ -14,7 +14,8 @@ const register = (req, res) => {
             const token = jwt.sign({ id: user._id }, JWT_SECRET, {
                 expiresIn: 7200
             })
-            const payload = { user , token }
+            const userId = user.id
+            const payload = { userId , token }
             user
                 .save()
                 .then(() => {
@@ -47,7 +48,8 @@ const login = (req, res) => {
                     const token = jwt.sign({ id: user._id }, JWT_SECRET, {
                         expiresIn: 7200
                     })
-                    const payload = { user, token }
+                    const userId = user.id
+                    const payload = { userId, token }
                     res.status(200).json(payload)
                 } else {
                     return res.status(401).send("Invaild password")

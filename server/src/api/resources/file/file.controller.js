@@ -1,4 +1,3 @@
-
 const File = require('./file.model');
 
 const getAllFiles = (req, res) => {

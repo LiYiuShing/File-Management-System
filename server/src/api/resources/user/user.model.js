@@ -51,6 +51,7 @@ userSchema.methods.comparePassword = function(password, cb) {
     })
 };
 
+
 userSchema.set('toJSON', {
     transform: (doc, ret) => {
         let retJson = {

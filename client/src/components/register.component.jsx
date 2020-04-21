@@ -32,6 +32,7 @@ const Register = ({ signInSuccess }) => {
         }
     }
 
+
     const register = (data) => {
         try {
             const requestOptions = {
