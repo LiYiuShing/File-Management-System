@@ -37,6 +37,14 @@ const FileAdd = (props) => {
         }
     }
 
+    const bytesToSize = (bytes) => {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes == 0) return '0 Byte';
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+     }
+
+
     const handleAddFileChange = (selectorFiles) => {
         const file = selectorFiles[0]
 
@@ -60,7 +68,7 @@ const FileAdd = (props) => {
                     source: reader.result,
                     userId: props.user.currentUser,
                     type: file['type'],
-                    size: file['size'],
+                    size: bytesToSize(file['size']),
                     date: dateString
                 }
             );
@@ -76,14 +84,16 @@ const FileAdd = (props) => {
     }
 
     return(
-        <div>
+        <div className="inner-container">
+            <h3>Upload File</h3>
             <form onSubmit={addFileFetch}>
                 <label>Select file:</label>
                 <input type="file" onChange={ (e) => handleAddFileChange(e.target.files) } />
                 <label>File Name:</label>
                 <input type="text" onChange={ (e) => handleFileNameChange(e.target.value)} value={addfile['fileName']} />
-                <label>File Size: {addfile['size']}</label>
-                <input type="submit" value="Submit"/>
+                <label>File Size: {addfile['size'] ? addfile['size'] : '0' }</label>
+                &nbsp;
+                <input type="submit" value="Upload"/>
             </form>
         </div>
     )

@@ -52,8 +52,9 @@ Testing Account
 | POST   | Login | /api/login | { email: email, password: password }| payload |
 | POST   | Upload File | /api/files/upload | { userId: userId, fileName: fileName, source: source, type: type, size: size} | payload |
 | POST   | Get All File | /api/files/get | { userId: userId } | payload |
-| PUT   | Edit File | /api/files/:id | { id: fileId } | payload |
-| DELETE | Delete File | /api/files/:id | { id: fileId } | payload |
+| POST   | Get Single File | /api/files/download | { userId: userId, _id: fileId } | payload |
+| PUT   | Edit File | /api/files/:id | { _id: fileId } | payload |
+| DELETE | Delete File | /api/files/:id | { _id: fileId } | payload |
 
 
 ## Front-End Dependencies

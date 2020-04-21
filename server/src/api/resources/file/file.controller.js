@@ -3,7 +3,15 @@ const File = require('./file.model');
 const getAllFiles = (req, res) => {
     File.find({ userId: req.body.userId  })
         .then(files => {
-            res.status(200).json(files)
+            const result = files.map((item) => {
+                    const newobj = {};
+                    newobj['fileId'] = item._id
+                    newobj['fileName'] = item.fileName
+                    newobj['size'] = item.size
+                    newobj['date'] = item.date
+                    return newobj;
+            })
+            res.status(200).json(result)
         })
         .catch(err => {
             res.status(500).send(err)
@@ -11,10 +19,13 @@ const getAllFiles = (req, res) => {
 };
 
 const getOneFile = (req, res) => {
-    File.findOne({ fileName: req.body.filename  })
+    File.findOne({ _id: req.body._id })
         .exec()
         .then(file => {
-            res.status(200).json(file)
+            res.status(200).json({
+                source: file.source,
+                fileName: file.fileName
+            })
         })
         .catch(err => {
             res.status(500).send(err)
@@ -63,7 +74,7 @@ const deleteFile = (req, res) => {
 
     File.findOneAndDelete({ _id: req.params.id })
         .then(file => {
-            if (!file) return res.status(404).json("File Not found")
+            if (!file) return res.status(404).sent("File Not found")
             const payload = {
                 file,
                 msg: "File was deleted"

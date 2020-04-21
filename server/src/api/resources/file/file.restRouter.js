@@ -9,9 +9,12 @@ fileRouter
 fileRouter.route("/get")
     .post(fileController.getAllFiles)
 
+fileRouter.route("/download")
+    .post(fileController.getOneFile)
+
+
 fileRouter
     .route("/:id")
-    .get(fileController.getOneFile)
     .post(fileController.createFile)
     .put(fileController.updateFile)
     .delete(fileController.deleteFile)

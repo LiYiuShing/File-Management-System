@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #F9F9F9;
 }
 
 code {
@@ -24,4 +25,9 @@ code {
 
 .paper-item {
   padding-right: 50px;
+}
+
+.inner-container {
+  margin: 0 1.5em 2em 0;
+  padding: 15px;
 }
