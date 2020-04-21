@@ -11,7 +11,7 @@ restRourer.route('/register').post(register);
 restRourer.route('/login').post(login);
 
 //Resource
-restRourer.use('/files', fileRouter)
+restRourer.use('/files', protect, fileRouter)
 restRourer.use('/users', protect, userRouter)
 
 module.exports = restRourer;

@@ -65,7 +65,7 @@ const protect = (req, res, next) => {
     if (!req.headers.authorization) {
         return res.status(400).send("Bad request")
     }
-    const token = req.headers.authorization
+    var token = req.headers.authorization
     token = token.replace('Bearer', '')
     jwt.verify(token, JWT_SECRET, err => {
         if (err) return res.status(401).send("Unauthorized")

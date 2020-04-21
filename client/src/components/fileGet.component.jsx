@@ -22,6 +22,7 @@ const FileGet = (props) => {
                 headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'authorization': props.user.token
                 },
                 body: JSON.stringify({
                     userId: props.user.currentUser
@@ -45,6 +46,7 @@ const FileGet = (props) => {
                 headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'authorization': props.user.token
                 },
                 body: JSON.stringify({
                     _id: e.target.id
@@ -73,6 +75,7 @@ const FileGet = (props) => {
                     headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
+                    'authorization': props.user.token
                         },
                     }
             
@@ -95,6 +98,7 @@ const FileGet = (props) => {
                     headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
+                    'authorization': props.user.token
                         },
                     }
             

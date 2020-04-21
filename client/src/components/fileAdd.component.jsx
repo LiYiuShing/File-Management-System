@@ -19,6 +19,7 @@ const FileAdd = (props) => {
                     headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
+                    'authorization': props.user.token
                     },
                     body: JSON.stringify(addfile)
                 }
