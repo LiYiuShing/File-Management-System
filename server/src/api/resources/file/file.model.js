@@ -23,7 +23,10 @@ const schema = {
     },
     size: {
         type: String
-    }
+    },
+    date: {
+        type: String,
+    },
 };
 
 const fileSchema = new Schema(schema, { timestamps: true })
@@ -36,7 +39,8 @@ fileSchema.set('toJSON', {
             userId: ret.userId,
             source: ret.source,
             type: ret.type,
-            size: ret.size
+            size: ret.size,
+            date: ret.date
         }
         return retJson
     }

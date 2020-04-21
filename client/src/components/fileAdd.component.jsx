@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const FileAdd = (props) => {
     const [addfile, setAddFile] = useState({
         fileName: '',
@@ -8,7 +9,7 @@ const FileAdd = (props) => {
         type: '',
         size: ''
     });
-    const [err, setError] = useState('');
+
     const addFileFetch = (event) => {
         event.preventDefault();
         if (addfile['source']) {
@@ -22,10 +23,11 @@ const FileAdd = (props) => {
                     body: JSON.stringify(addfile)
                 }
 
-                fetch(`http://localhost:5000/api/files/`, requestOptions)
+                fetch(`http://localhost:5000/api/files/upload`, requestOptions)
                     .then(res => res.json())
                     .then((data) => {
-                        alert("Submit Successful")
+                        alert("Submit Successful");
+                        window.location.reload();
                 })
             } catch (err) {
                 return err
@@ -38,7 +40,17 @@ const FileAdd = (props) => {
     const handleAddFileChange = (selectorFiles) => {
         const file = selectorFiles[0]
 
-        console.log(file['size'])
+        //time
+        const m = new Date();
+        const dateString =
+            m.getUTCFullYear() + "/" +
+            ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
+            ("0" + m.getUTCDate()).slice(-2) + " " +
+            ("0" + m.getUTCHours()).slice(-2) + ":" +
+            ("0" + m.getUTCMinutes()).slice(-2) + ":" +
+            ("0" + m.getUTCSeconds()).slice(-2);
+
+        //file convertion
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {
@@ -48,30 +60,30 @@ const FileAdd = (props) => {
                     source: reader.result,
                     userId: props.user.currentUser,
                     type: file['type'],
-                    size: file['size']
+                    size: file['size'],
+                    date: dateString
                 }
             );
         };
         reader.onerror = function (error) {
-            setError(error);
+            
         };
     }
 
     const handleFileNameChange = (e) => {
         setAddFile({...addfile, fileName: e })
+        
     }
 
     return(
         <div>
-            ADD
             <form onSubmit={addFileFetch}>
                 <label>Select file:</label>
                 <input type="file" onChange={ (e) => handleAddFileChange(e.target.files) } />
                 <label>File Name:</label>
                 <input type="text" onChange={ (e) => handleFileNameChange(e.target.value)} value={addfile['fileName']} />
                 <label>File Size: {addfile['size']}</label>
-                <label>File Type: {addfile['type']}</label>
-                <input type="submit" value="Submit" /> 
+                <input type="submit" value="Submit"/>
             </form>
         </div>
     )

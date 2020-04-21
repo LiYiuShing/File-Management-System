@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,12 +7,11 @@ import { createStructuredSelector } from 'reselect';
 import HomePage from './pages/home.component';
 import SignInPage from './pages/signin.component';
 import DashboardPage from './pages/dashboard.component.jsx';
-//import { _404}  from './pages/error/errorpage.component';
 
 import { selectCurrentUser } from './redux/user/user.selector';
 import { checkUserSession } from './redux/user/user.action';
 
-import Header from './components/header.component';
+import Header from './components/header/header.component';
 
 const App = ({ checkUserSession, currentUser }) => {
   

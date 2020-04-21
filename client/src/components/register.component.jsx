@@ -21,7 +21,7 @@ const Register = ({ signInSuccess }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(password != cpassword) {
+        if(password !== cpassword) {
             alert('Password and Re-password is not same!')
         } else {
             const data = {
@@ -31,7 +31,6 @@ const Register = ({ signInSuccess }) => {
             register(data);
         }
     }
-
 
     const register = (data) => {
         try {

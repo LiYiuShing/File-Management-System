@@ -3,13 +3,14 @@ const fileRouter = express.Router();
 const fileController = require('./file.controller');
 
 fileRouter
-    .route("/")
-    .get(fileController.getAllFiles)
+    .route("/upload")
     .post(fileController.createFile)
 
+fileRouter.route("/get")
+    .post(fileController.getAllFiles)
 
 fileRouter
-    .route("/:fileid")
+    .route("/:id")
     .get(fileController.getOneFile)
     .post(fileController.createFile)
     .put(fileController.updateFile)

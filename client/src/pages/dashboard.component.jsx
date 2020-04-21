@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FileAdd from '../components/fileAdd.component';
+import FileGet from '../components/fileGet.component';
 import { connect } from 'react-redux';
 
 const DashboardPage = ({user}) => {
     return(
-        <div>
+        <div className='container'>
             <div>GET, ADD, PUT, DELETE</div>
             <FileAdd user={user} />
+            <FileGet user={user} />
         </div>
     )
 } 

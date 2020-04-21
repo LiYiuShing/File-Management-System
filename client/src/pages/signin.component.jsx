@@ -4,7 +4,7 @@ import Register from '../components/register.component';
 
 const SignInPage = () => {
     return(
-        <div>
+        <div className='container'>
             <Login />
             <Register />
         </div>
