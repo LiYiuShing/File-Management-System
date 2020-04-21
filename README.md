@@ -7,7 +7,6 @@ These instructions will get you a copy of the project up and running on your loc
 * [NODE v13.13.0](https://nodejs.org/en/) 
 * [NPM v6.14.4](https://www.npmjs.com/get-npm) 
 
-
 ### Installing
 In order to get the project up and running:
 
@@ -27,6 +26,9 @@ Run the back-end server at http://localhost:5000/
     $ npm install 
     $ npm start
   ```
+
+If the server can't connect to MongoDB, you should setup a free new cluster via mongoDB.Atlas for the connection.
+[MONGODB ATLAS](https://account.mongodb.com/account/login/) 
 
 ## ENV Variables
 Config the following variable into server .env file
