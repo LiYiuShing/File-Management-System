@@ -38,14 +38,22 @@ For Testing
     DB_CONNECT = 'mongodb+srv://admin:admin@cluster0-wxo2b.mongodb.net/test?retryWrites=true&w=majority'
     TOKEN_SECRET = 'ABC123'
 ```
-
+### Testing 
+Testing Account
+  ```
+    Email = admin@admin.com
+    Password = abc
+  ```
 
 ## Back-End API
-| Method | Endpoint | Request | Response |
-| ------ | ------ | ----- | ------- |
-| POST   | /api/register | { email: email, password: password } | payload |
-| POST   | /api/login | { email: email, password: password }| payload |
-| GET   | /api/:id/getOneUser | | |
+| Method | Description | Endpoint | Request | Response |
+| ------ | ------ | ----- | ----- | ----- | 
+| POST   | Registation | /api/register | { email: email, password: password } | payload |
+| POST   | Login | /api/login | { email: email, password: password }| payload |
+| POST   | Upload File | /api/files/upload | { userId: userId, fileName: fileName, source: source, type: type, size: size} | payload |
+| POST   | Get All File | /api/files/get | { userId: userId } | payload |
+| PUT   | Edit File | /api/files/:id | { id: fileId } | payload |
+| DELETE | Delete File | /api/files/:id | { id: fileId } | payload |
 
 
 ## Front-End Dependencies

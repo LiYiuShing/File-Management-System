@@ -51,15 +51,16 @@ const updateFile = (req, res) => {
                     res.status(200).json(newFile)
                 })
                 .catch(() => {
-                    res.status(404).json("Not found")
+                    res.status(404).send("Not found")
                 })
         })
         .catch(() => {
-            res.status(404).json("Not found")
+            res.status(404).send("Not found")
         })
 };
 
 const deleteFile = (req, res) => {
+
     File.findOneAndDelete({ _id: req.params.id })
         .then(file => {
             if (!file) return res.status(404).json("File Not found")

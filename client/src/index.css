@@ -21,3 +21,7 @@ code {
   position: relative;
   z-index: 1;
 }
+
+.paper-item {
+  padding-right: 50px;
+}

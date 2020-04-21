@@ -41,7 +41,7 @@ const FileAdd = (props) => {
         const file = selectorFiles[0]
 
         //time
-        const m = new Date();
+        const m = new Date()
         const dateString =
             m.getUTCFullYear() + "/" +
             ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +

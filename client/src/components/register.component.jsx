@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signInSuccess } from '../redux/user/user.action';
 
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 const Register = ({ signInSuccess }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -55,21 +58,41 @@ const Register = ({ signInSuccess }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            Login
-            <label>
-                Email:
-                <input type="text" value={email} onChange={handleEmailChange} />
-            </label>
-            <label>
-                Password:
-                <input type="password" value={password} onChange={handlePasswordChange} />
-            </label>
-            <label>
-                Confrim Password:
-                <input type="password" value={cpassword} onChange={handleCpasswordChange} />
-            </label>
-            <input type="submit" value="Submit" />
+        <form onSubmit={handleSubmit} className="container">
+            <h2>Register</h2>
+            <TextField
+                id="standard-textarea"
+                value={email}
+                label="Email"
+                placeholder="xxx@xxxx.com"
+                onChange={handleEmailChange}
+            />
+
+            <br></br>
+            <TextField
+                id="standard-password-input"
+                value={password}
+                label="Pasword"
+                type="password"
+                autoComplete="current-password"
+                placeholder="Your password"
+                onChange={handlePasswordChange}
+            />
+
+            <br></br>
+            <TextField
+                id="standard-password-input"
+                value={cpassword}
+                type="password"
+                autoComplete="current-password"
+                label="Confrim Password"
+                placeholder="Confrim password"
+                onChange={handleCpasswordChange}
+            />
+
+            <br></br>
+            <br></br>
+            <Button variant="outlined" type="submit" value="Submit" >Submit</Button>
         </form>
     )
 }

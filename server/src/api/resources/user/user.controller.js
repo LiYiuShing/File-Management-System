@@ -6,7 +6,7 @@ const getAllUsers = (req, res) => {
             res.status(200).json(users)
         })
         .catch(err => {
-            res.status(500).send(err)
+            res.status(500).json(err)
         })
 };
 
@@ -17,7 +17,7 @@ const getOneUser = (req, res) => {
             res.status(200).json(user)
         })
         .catch(err => {
-            res.status(500).send(err)
+            res.status(500).json(err)
         })
 };
 

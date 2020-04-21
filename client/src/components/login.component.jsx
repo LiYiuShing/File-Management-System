@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signInSuccess } from '../redux/user/user.action';
 
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 const Login = ({ signInSuccess }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -37,26 +40,39 @@ const Login = ({ signInSuccess }) => {
             fetch(`http://localhost:5000/api/login`, requestOptions)
                 .then(res => res.json())
                 .then((data) => {
-                    signInSuccess(data)
-                    console.log("signInSuccess")
-            })
+                    if(data) {signInSuccess(data)}
+                })
+                .catch(err => alert("Email Or Password incorrect"))
         } catch (err) {
-            return err
+            console.log("Email Or Password incorrect")
         }
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            Login
-            <label>
-                Email:
-                <input type="text" value={email} onChange={handleEmailChange} />
-            </label>
-            <label>
-                Password:
-                <input type="password" value={password} onChange={handlePasswordChange} />
-            </label>
-            <input type="submit" value="Submit" />
+        <form onSubmit={handleSubmit} className="container">
+            <h2>Login</h2>
+            <TextField
+                id="standard-textarea"
+                value={email}
+                label="Email"
+                placeholder="xxx@xxxx.com"
+                onChange={handleEmailChange}
+            />
+
+            <br></br>
+            <TextField
+                id="standard-password-input"
+                value={password}
+                label="Pasword"
+                type="password"
+                placeholder="Your password"
+                autoComplete="current-password"
+                onChange={handlePasswordChange}
+            />
+
+            <br></br>
+            <br></br>
+            <Button variant="outlined" type="submit" value="Submit" >Login</Button>
         </form>
     )
 }

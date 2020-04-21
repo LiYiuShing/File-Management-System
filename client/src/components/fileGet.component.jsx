@@ -7,6 +7,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import DeleteIcon from '@material-ui/icons/Delete';
+import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button';
+
 const FileGet = (props) => {
     const [allfile, setAllfile ] = useState('');
     const [status, setStatus] = useState(false);
@@ -65,7 +69,7 @@ const FileGet = (props) => {
         if (window.confirm('Are you sure delete the file?')) {
             try {
                 const requestOptions = {
-                    method: 'DELETE',
+                    method: 'PUT',
                     headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -117,7 +121,7 @@ const FileGet = (props) => {
                             <button id={value['fileId']} onClick={(e) => {handleEdit(e) }}>Edit</button>
                             </TableCell>
                             <TableCell component="th" scope="row">
-                                <button id={value['fileId']} onClick={(e) => {handleDelete(e) }}>Delete</button>
+                            <button id={value['fileId']} onClick={(e) => {handleDelete(e) }}>Delete</button>
                             </TableCell>
                         </TableRow>
                     )) : (
