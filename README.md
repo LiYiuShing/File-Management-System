@@ -48,10 +48,17 @@ Testing Account
   ```
 
 ## Back-End API
+
+### User 
 | Method | Description | Endpoint | Request | Response |
 | ------ | ------ | ----- | ----- | ----- | 
-| POST   | Registation | /api/register | { email: email, password: password } | payload |
-| POST   | Login | /api/login | { email: email, password: password }| payload |
+| POST   | Registation | /api/register | { email: email, password: password } | { userId: userId, userName: userName, token: token } |
+| POST   | Login | /api/login | { email: email, password: password }| { userId: userId, userName: userName, token: token }|
+
+
+### File (All methods will use JSON Web Tokens in header for the user authentication )
+| Method | Description | Endpoint | Request | Response |
+| ------ | ------ | ----- | ----- | ----- | 
 | POST   | Upload File | /api/files/upload | { userId: userId, fileName: fileName, source: source, type: type, size: size} | payload |
 | POST   | Get All File | /api/files/get | { userId: userId } | payload |
 | POST   | Get Single File | /api/files/download | { userId: userId, _id: fileId } | payload |
