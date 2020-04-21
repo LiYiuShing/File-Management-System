@@ -27,6 +27,10 @@ code {
   padding-right: 50px;
 }
 
+.home-container {
+  padding-top: 10.5em;
+}
+
 .inner-container {
   margin: 0 1.5em 2em 0;
   padding: 15px;

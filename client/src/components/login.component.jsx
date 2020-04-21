@@ -40,7 +40,7 @@ const Login = ({ signInSuccess }) => {
             fetch(`http://localhost:5000/api/login`, requestOptions)
                 .then(res => res.json())
                 .then((data) => {
-                    if(data) {signInSuccess(data)}
+                    signInSuccess(data)
                 })
                 .catch(err => alert("Email Or Password incorrect"))
         } catch (err) {

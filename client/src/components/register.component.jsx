@@ -50,7 +50,6 @@ const Register = ({ signInSuccess }) => {
                 .then(res => res.json())
                 .then((data) => {
                     signInSuccess(data)
-                    console.log("signInSuccess")
             })
         } catch (err) {
             return err

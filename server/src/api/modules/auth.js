@@ -15,7 +15,8 @@ const register = (req, res) => {
                 expiresIn: 7200
             })
             const userId = user.id
-            const payload = { userId , token }
+            const userName = user.email
+            const payload = { userId , token, userName }
             user
                 .save()
                 .then(() => {
@@ -36,7 +37,7 @@ const register = (req, res) => {
 
 const login = (req, res) => {
     const { email, password } = req.body
-    User.findOneAndUpdate(
+    User.findOne(
         { email: email }
     )
         .exec()
@@ -49,7 +50,8 @@ const login = (req, res) => {
                         expiresIn: 7200
                     })
                     const userId = user.id
-                    const payload = { userId, token }
+                    const userName = user.email
+                    const payload = { userId, token, userName }
                     res.status(200).json(payload)
                 } else {
                     return res.status(401).send("Invaild password")

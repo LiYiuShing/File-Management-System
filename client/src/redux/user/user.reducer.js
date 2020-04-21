@@ -12,6 +12,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 currentUser: action.payload.userId,
+                userName: action.payload.userName,
                 token: action.payload.token,
                 error: null
             };
@@ -20,7 +21,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 currentUser: null,
                 token: null,
-                error: null
+                error: null,
+                userName: null
             }
 
         default:

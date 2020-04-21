@@ -14,7 +14,15 @@ const Header = ({ currentUser, signOutSuccess }) => {
             <div className="nav-content">
                 <div className="nav-row">
                     <ul className="nav-links right">
-                        <li className="nav-link text-link title"> File management system</li>
+                        <li className="nav-link text-link title"> 
+                                        <Link 
+                                            style={{ textDecoration: "none" }}
+                                            to={'/'}
+                                            className="text-link"
+                                        >
+                                             File management system
+                                        </Link>                   
+                        </li>
                             { currentUser ? (
                                     <li className="nav-link text-link">
                                         <Link 

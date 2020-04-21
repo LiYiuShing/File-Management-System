@@ -4,7 +4,9 @@
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ## Prerequisites
-* [NPM](https://www.npmjs.com/get-npm)
+* [NODE v13.13.0](https://nodejs.org/en/) 
+* [NPM v6.14.4](https://www.npmjs.com/get-npm) 
+
 
 ### Installing
 In order to get the project up and running:

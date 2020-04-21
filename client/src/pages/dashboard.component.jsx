@@ -3,12 +3,11 @@ import FileAdd from '../components/fileAdd.component';
 import FileGet from '../components/fileGet.component';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-
 
 const DashboardPage = ({user}) => {
     return(
         <div className='container'>
+        <h3 align='left'>Hello {user.userName}</h3>
             <Paper elevation={1}>
                 <FileAdd user={user} />
             </Paper>

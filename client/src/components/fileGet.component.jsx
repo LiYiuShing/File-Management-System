@@ -90,33 +90,6 @@ const FileGet = (props) => {
         } 
     }
 
-    const handleEdit = (e) => {
-        if (window.confirm('Are you sure delete the file?')) {
-            try {
-                const requestOptions = {
-                    method: 'PUT',
-                    headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'authorization': props.user.token
-                        },
-                    }
-            
-                fetch(`http://localhost:5000/api/files/${e.target.id}`, requestOptions)
-                    .then(res => res.json())
-                    .then((data) => {
-                        setStatus(true)
-                    .catch(err => {
-                        alert(err)
-                    })
-                })  
-            } catch (err) {
-                return err
-            }
-        } 
-        setStatus(false)
-    }
-
     return(
         <div className="inner-container">
             <TableContainer>
